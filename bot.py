@@ -476,27 +476,15 @@ def finalize_channel(message, ch_id, ch_name):
         )
 
     except Exception as e:
+    print(f"PLAN ERROR: {type(e).__name__}: {e}")
 
-        print("Plan setup error:", e)
-
-        bot.send_message(
-
-            ADMIN_ID,
-
-            "❌ *Invalid Plan Format!*\n\n"
-
-            "Use examples:\n"
-            "`1d:99`\n"
-            "`7d:149`\n"
-            "`30d:199`\n"
-            "`12h:49`\n"
-            "`60m:20`\n\n"
-
-            "Multiple plans:\n"
-            "`1d:99, 7d:149, 30d:199`",
-
-            parse_mode="Markdown"
-        )
+    bot.send_message(
+        ADMIN_ID,
+        f"❌ ERROR:\n\n"
+        f"Type: `{type(e).__name__}`\n"
+        f"Details: `{e}`",
+        parse_mode="Markdown"
+    )
 
 
 # =========================================================
